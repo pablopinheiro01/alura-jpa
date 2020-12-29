@@ -3,6 +3,7 @@ package br.com.alura.jpa.modelo;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Conta {
     private Double saldo;
     
     //indico que o mapeamento ja esta feito atraves do atributo conta que foi feito na classe Movimentacao
-    @OneToMany(mappedBy = "conta") 
+    @OneToMany(mappedBy = "conta", fetch = FetchType.EAGER) 
     private List<Movimentacao> movimentacoes;
     
 	public Long getId() {
