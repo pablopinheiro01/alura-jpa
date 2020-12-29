@@ -1,9 +1,12 @@
 package br.com.alura.jpa.modelo;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conta {
@@ -19,6 +22,10 @@ public class Conta {
     private Integer numero;
     
     private Double saldo;
+    
+    //indico que o mapeamento ja esta feito atraves do atributo conta que foi feito na classe Movimentacao
+    @OneToMany(mappedBy = "conta") 
+    private List<Movimentacao> movimentacoes;
     
 	public Long getId() {
 		return id;
@@ -49,6 +56,12 @@ public class Conta {
 	}
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
+	}
+	
+	public List<Movimentacao> getMovimentacoes() {
+		
+		return movimentacoes;
+		
 	}
     
 }
